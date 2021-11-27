@@ -13,9 +13,6 @@ internal class LoginViewModel : ViewModel
     #region Fields
 
     private readonly ErrorViewModel _errorViewModel;
-    private readonly IAuthorizationService _authorizationService;
-    private readonly INavigationStore _navigationStore;
-    private readonly IViewModelFactory _viewModelFactory;
 
     #endregion Fields
 
@@ -36,7 +33,7 @@ internal class LoginViewModel : ViewModel
     }
 
     private string _password;
-
+    
     public string Password
     {
         get => _password;
@@ -57,11 +54,8 @@ internal class LoginViewModel : ViewModel
     public LoginViewModel(ErrorViewModel errorViewModel, MessageViewModel messageViewModel, IAuthorizationService authorizationService, INavigationStore navigationStore, IViewModelFactory viewModelFactory)
     {
         _errorViewModel = errorViewModel;
-        _authorizationService = authorizationService;
-        _navigationStore = navigationStore;
-        _viewModelFactory = viewModelFactory;
         MessageViewModel = messageViewModel;
-        LogInCommand = new LogInCommand(this, _authorizationService, _navigationStore, _viewModelFactory);
+        LogInCommand = new LogInCommand(this, authorizationService, navigationStore, viewModelFactory);
     }
 
     #endregion Ctor

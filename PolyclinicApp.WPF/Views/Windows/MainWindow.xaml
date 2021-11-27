@@ -7,7 +7,7 @@
         xmlns:vm="clr-namespace:PolyclinicApp.WPF.ViewModels"
         xmlns:userControls="clr-namespace:PolyclinicApp.WPF.Views.UserControls"
         mc:Ignorable="d"
-        Title="Клиника+" Height="450" Width="800" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Height="450" Width="800" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <DataTemplate DataType="{x:Type vm:LoginViewModel}">
             <userControls:LoginView />

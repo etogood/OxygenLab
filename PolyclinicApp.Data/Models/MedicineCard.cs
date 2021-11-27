@@ -17,8 +17,6 @@ namespace PolyclinicApplication.Data.Models
 
         public string Disease { get; set; }
 
-        public string MethodOfTreatment { get; set; }
-
         [DataType(DataType.Date)]
         public DateTime DateOfDiagnosis { get; set; }
 

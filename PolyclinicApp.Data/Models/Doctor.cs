@@ -18,7 +18,9 @@ namespace PolyclinicApplication.Data.Models
 
         public string Patronymic { get; set; }
 
-        [ForeignKey("SpecializationId")]
+        public string FullName => Surname + " " + FirstName + " " + Patronymic;
+
+            [ForeignKey("SpecializationId")]
         public Specialization Specialization { get; set; }
     }
 }

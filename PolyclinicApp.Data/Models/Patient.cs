@@ -21,6 +21,9 @@ namespace PolyclinicApplication.Data.Models
 
         public string Patronymic { get; set; }
 
+        [NotMapped]
+        public string FullName => Surname + " " + FirstName + " " + Patronymic;
+
         public int MedicalInsuranceId { get; set; }
 
         public string InsuranceIndividualPersonalAccountNumber { get; set; }
