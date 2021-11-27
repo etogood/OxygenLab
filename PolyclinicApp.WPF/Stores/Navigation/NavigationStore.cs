@@ -1,13 +1,12 @@
-﻿using System;
-using PolyclinicApp.WPF.Factories.ViewModel;
-using PolyclinicApp.WPF.Stores.Navigation;
-using PolyclinicApp.WPF.ViewModels.Base;
+﻿using PolyclinicApp.WPF.ViewModels.Base;
+using System;
 
-namespace PolyclinicApp.WPF.Stores;
+namespace PolyclinicApp.WPF.Stores.Navigation;
 
 internal class NavigationStore : INavigationStore
 {
     private ViewModel? _currentViewModel;
+
     public ViewModel? CurrentViewModel
     {
         get => _currentViewModel;

@@ -1,11 +1,7 @@
-﻿using System.Windows.Input;
-using PolyclinicApp.WPF.Commands;
-using PolyclinicApp.WPF.Commands.Base;
-using PolyclinicApp.WPF.Factories.Commands;
-using PolyclinicApp.WPF.Factories.ViewModel;
-using PolyclinicApp.WPF.Stores;
+﻿using PolyclinicApp.WPF.Commands;
 using PolyclinicApp.WPF.Stores.Navigation;
 using PolyclinicApp.WPF.ViewModels.Base;
+using System.Windows.Input;
 
 namespace PolyclinicApp.WPF.ViewModels;
 
@@ -17,14 +13,14 @@ internal class MainViewModel : ViewModel
 
     public ICommand? CloseCommand { get; }
 
-    #endregion
+    #endregion Commands
 
     public ViewModel? CurrentViewModel => _navigationStore.CurrentViewModel;
 
-    public MainViewModel(INavigationStore navigationStore, ICommandFactory commandFactory)
+    public MainViewModel(INavigationStore navigationStore)
     {
         _navigationStore = navigationStore;
-        CloseCommand = commandFactory.CreateNewCommand(CommandType.Close);
+        CloseCommand = new CloseCommand();
         _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
     }
 

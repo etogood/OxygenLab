@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PolyclinicApp.WPF.ViewModels.Base
 {
@@ -22,7 +20,7 @@ namespace PolyclinicApp.WPF.ViewModels.Base
 
         public void AddError(string propertyName, string errorMessage)
         {
-            if(!_errors.ContainsKey(propertyName))
+            if (!_errors.ContainsKey(propertyName))
                 _errors.Add(propertyName, new List<string>());
             _errors[propertyName].Add(errorMessage);
             OnErrorsChanged(propertyName);
@@ -30,7 +28,7 @@ namespace PolyclinicApp.WPF.ViewModels.Base
 
         public void ClearErrors(string propertyName)
         {
-            if(_errors.Remove(propertyName))
+            if (_errors.Remove(propertyName))
                 OnErrorsChanged(propertyName);
         }
 

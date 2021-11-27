@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using PolyclinicApp.WPF.Exceptions;
+﻿using PolyclinicApp.WPF.Exceptions;
 using PolyclinicApp.WPF.Services.Users;
 using PolyclinicApplication.Data.Models;
 

@@ -4,6 +4,7 @@ using PolyclinicApp.WPF.ViewModels;
 using PolyclinicApp.WPF.ViewModels.Base;
 
 namespace PolyclinicApp.WPF.HostBuilders;
+
 internal static class AddViewModelsHostBuilderExtension
 {
     public static IHostBuilder AddViewModels(this IHostBuilder host)

@@ -1,5 +1,4 @@
 ﻿using PolyclinicApp.WPF.Factories.ViewModel;
-using PolyclinicApp.WPF.Stores;
 using PolyclinicApp.WPF.Stores.Navigation;
 using PolyclinicApp.WPF.ViewModels.Base;
 

@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using PolyclinicApplication.Data.Models;
+﻿using PolyclinicApplication.Data.Models;
 
 namespace PolyclinicApp.WPF.Services.Authorization
 {

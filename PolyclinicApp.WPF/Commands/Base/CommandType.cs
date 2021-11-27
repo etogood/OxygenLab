@@ -2,7 +2,6 @@
 
 public enum CommandType
 {
-    Navigation,
     LogIn,
     Close
 }

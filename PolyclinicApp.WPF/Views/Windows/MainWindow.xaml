@@ -10,22 +10,22 @@
         Title="Клиника+" Height="450" Width="800" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <DataTemplate DataType="{x:Type vm:LoginViewModel}">
-            <userControls:LoginView/>
+            <userControls:LoginView />
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:InformationViewModel}">
-            <userControls:InformationView/>
+            <userControls:InformationView />
         </DataTemplate>
     </Window.Resources>
     <StackPanel>
         <StackPanel Orientation="Horizontal"  Height="50">
-            <Button Width="140" Height="40" Content="Новый пациент" Margin="10 0 0 0"/>
-            <Button Width="140" Height="40" Content="Новая запись" Margin="10 0 0 0"/>
+            <Button Width="140" Height="40" Content="Новый пациент" Margin="10 0 0 0" />
+            <Button Width="140" Height="40" Content="Новая запись" Margin="10 0 0 0" />
             <Button Width="140" Height="30" Content="Расписание врачей" FontSize="10" Margin="210 0 0 0"
-                    Style="{StaticResource MaterialDesignFlatButton}"/>
+                    Style="{StaticResource MaterialDesignFlatButton}" />
             <Button Width="120" Height="30" Content="Выйти и закрыть" Margin="20 0 0 0"
-                    Background="Red" FontSize="10" Command="{Binding CloseCommand}"/>
+                    Background="Red" FontSize="10" Command="{Binding CloseCommand}" />
         </StackPanel>
-        <Line StrokeThickness="2" Stroke="Black" X1="800"/>
-        <ContentControl Content="{Binding CurrentViewModel}" Height="400"/>
+        <Line StrokeThickness="2" Stroke="Black" X1="800" />
+        <ContentControl Content="{Binding CurrentViewModel}" Height="400" />
     </StackPanel>
 </Window>

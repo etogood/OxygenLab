@@ -1,14 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Windows.Input;
-using PolyclinicApp.WPF.Commands;
-using PolyclinicApp.WPF.Commands.Base;
-using PolyclinicApp.WPF.Factories.Commands;
+﻿using PolyclinicApp.WPF.Commands;
 using PolyclinicApp.WPF.Factories.ViewModel;
 using PolyclinicApp.WPF.Services.Authorization;
-using PolyclinicApp.WPF.Stores;
 using PolyclinicApp.WPF.Stores.Navigation;
 using PolyclinicApp.WPF.ViewModels.Base;
+using System.Collections;
+using System.Windows.Input;
 
 namespace PolyclinicApp.WPF.ViewModels;
 
@@ -17,14 +13,17 @@ internal class LoginViewModel : ViewModel
     #region Fields
 
     private readonly ErrorViewModel _errorViewModel;
+    private readonly IAuthorizationService _authorizationService;
+    private readonly INavigationStore _navigationStore;
+    private readonly IViewModelFactory _viewModelFactory;
 
-    #endregion
+    #endregion Fields
 
     #region Commands
 
     public ICommand? LogInCommand { get; }
 
-    #endregion
+    #endregion Commands
 
     #region Properties
 
@@ -34,7 +33,6 @@ internal class LoginViewModel : ViewModel
     {
         get => _login;
         set => Set(ref _login, value);
-        
     }
 
     private string _password;
@@ -43,7 +41,6 @@ internal class LoginViewModel : ViewModel
     {
         get => _password;
         set => Set(ref _password, value);
-        
     }
 
     public MessageViewModel MessageViewModel { get; set; }
@@ -53,20 +50,21 @@ internal class LoginViewModel : ViewModel
         set => MessageViewModel.Message = value;
     }
 
-
-
-    #endregion
+    #endregion Properties
 
     #region Ctor
 
-    public LoginViewModel(ErrorViewModel errorViewModel, MessageViewModel messageViewModel, ICommandFactory commandFactory)
+    public LoginViewModel(ErrorViewModel errorViewModel, MessageViewModel messageViewModel, IAuthorizationService authorizationService, INavigationStore navigationStore, IViewModelFactory viewModelFactory)
     {
         _errorViewModel = errorViewModel;
+        _authorizationService = authorizationService;
+        _navigationStore = navigationStore;
+        _viewModelFactory = viewModelFactory;
         MessageViewModel = messageViewModel;
-        LogInCommand = commandFactory.CreateNewCommand(CommandType.LogIn);
+        LogInCommand = new LogInCommand(this, _authorizationService, _navigationStore, _viewModelFactory);
     }
 
-    #endregion
+    #endregion Ctor
 
     #region Errors
 
@@ -75,6 +73,5 @@ internal class LoginViewModel : ViewModel
         return _errorViewModel.GetErrors(propertyName);
     }
 
-    #endregion
+    #endregion Errors
 }
-

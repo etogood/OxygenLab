@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PolyclinicApp.Data.DataAccess;
 using PolyclinicApp.WPF.Services.Authorization;
 using PolyclinicApp.WPF.Services.Users;
 using PolyclinicApplication.Data.Models;

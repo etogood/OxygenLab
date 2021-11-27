@@ -1,9 +1,6 @@
-﻿using System;
+﻿using PolyclinicApplication.Data.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using PolyclinicApplication.Data.Models;
 
 namespace PolyclinicApp.WPF.Services.Users
 {
@@ -16,6 +13,7 @@ namespace PolyclinicApp.WPF.Services.Users
         Task Update(T oldEntity, T newEntity);
 
         User? GetByLogin(string login);
+
         Task<IEnumerable<T>> GetAll();
     }
 }

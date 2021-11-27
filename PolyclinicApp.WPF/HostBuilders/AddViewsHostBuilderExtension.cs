@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PolyclinicApp.WPF.ViewModels;
 using PolyclinicApp.WPF.Views.Windows;
 
 namespace PolyclinicApp.WPF.HostBuilders;

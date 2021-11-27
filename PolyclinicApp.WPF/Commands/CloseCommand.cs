@@ -1,5 +1,4 @@
 ﻿using PolyclinicApp.WPF.Commands.Base;
-using Prism.Services.Dialogs;
 using System.Windows;
 
 namespace PolyclinicApp.WPF.Commands

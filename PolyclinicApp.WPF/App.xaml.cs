@@ -1,18 +1,14 @@
-﻿using System.Windows;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PolyclinicApp.Data.DataAccess;
 using PolyclinicApp.WPF.Factories.ViewModel;
 using PolyclinicApp.WPF.HostBuilders;
-using PolyclinicApp.WPF.Services.Authorization;
-using PolyclinicApp.WPF.Services.Users;
-using PolyclinicApp.WPF.Stores;
 using PolyclinicApp.WPF.Stores.Navigation;
 using PolyclinicApp.WPF.ViewModels;
 using PolyclinicApp.WPF.Views.Windows;
-using PolyclinicApplication.Data.Models;
+using System.Windows;
 
 namespace PolyclinicApp.WPF;
+
 public partial class App : Application
 {
     private static IHost _host = null!;

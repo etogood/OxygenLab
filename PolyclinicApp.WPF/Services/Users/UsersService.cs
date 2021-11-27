@@ -1,20 +1,21 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using PolyclinicApp.Data.DataAccess;
+using PolyclinicApplication.Data.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using PolyclinicApp.Data.DataAccess;
-using PolyclinicApplication.Data.Models;
 
 namespace PolyclinicApp.WPF.Services.Users
 {
     internal class UsersService : IDataService<User>
     {
         private readonly AppDbContext _context;
+
         public UsersService(AppDbContextFactory appDbContextFactory)
         {
             _context = appDbContextFactory.CreateDbContext(null);
         }
+
         public async Task Create(User user)
         {
             await _context.Users!.AddAsync(user);

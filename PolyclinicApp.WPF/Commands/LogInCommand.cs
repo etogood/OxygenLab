@@ -10,18 +10,17 @@ namespace PolyclinicApp.WPF.Commands
 {
     internal class LogInCommand : BaseCommand
     {
+        private readonly IAuthorizationService _authorizationService;
         private readonly INavigationStore _navigationStore;
         private readonly IViewModelFactory _viewModelFactory;
-        private readonly IAuthorizationService _authorizationService;
-
         private readonly LoginViewModel _loginViewModel;
 
-        public LogInCommand(INavigationStore navigationStore, IViewModelFactory viewModelFactory, LoginViewModel loginViewModel, IAuthorizationService authorizationService)
+        public LogInCommand(LoginViewModel loginViewModel, IAuthorizationService authorizationService, INavigationStore navigationStore, IViewModelFactory viewModelFactory)
         {
-            _navigationStore = navigationStore;
-            _viewModelFactory = viewModelFactory;
             _loginViewModel = loginViewModel;
             _authorizationService = authorizationService;
+            _navigationStore = navigationStore;
+            _viewModelFactory = viewModelFactory;
         }
 
         public override bool CanExecute(object? parameter) => true;
@@ -35,7 +34,7 @@ namespace PolyclinicApp.WPF.Commands
 
             try
             {
-                 _authorizationService.Login(login, password);
+                _authorizationService.Login(login, password);
                 if (!_loginViewModel.MessageViewModel.HasMessage)
                     _navigationStore.CurrentViewModel = _viewModelFactory.CreateViewModel(ViewType.Information);
             }
