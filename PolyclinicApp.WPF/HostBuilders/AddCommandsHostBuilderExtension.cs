@@ -13,6 +13,9 @@ internal static class AddCommandsHostBuilderExtension
             services.AddSingleton<NavigationCommand>();
             services.AddSingleton<LogInCommand>();
             services.AddSingleton<CloseCommand>();
+            services.AddSingleton<DoctorsScheduleCommand>();
+            services.AddSingleton<NewAppointmentCommand>();
+            services.AddSingleton<NewPatientCommand>();
         });
     }
 }

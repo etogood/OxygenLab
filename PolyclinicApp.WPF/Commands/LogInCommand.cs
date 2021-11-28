@@ -5,6 +5,7 @@ using PolyclinicApp.WPF.Services.Authorization;
 using PolyclinicApp.WPF.Stores.Navigation;
 using PolyclinicApp.WPF.ViewModels;
 using System;
+using PolyclinicApp.WPF.Stores.Login;
 
 namespace PolyclinicApp.WPF.Commands
 {
@@ -13,14 +14,16 @@ namespace PolyclinicApp.WPF.Commands
         private readonly IAuthorizationService _authorizationService;
         private readonly INavigationStore _navigationStore;
         private readonly IViewModelFactory _viewModelFactory;
+        private readonly ILoginStore _loginStore;
         private readonly LoginViewModel _loginViewModel;
 
-        public LogInCommand(LoginViewModel loginViewModel, IAuthorizationService authorizationService, INavigationStore navigationStore, IViewModelFactory viewModelFactory)
+        public LogInCommand(LoginViewModel loginViewModel, IAuthorizationService authorizationService, INavigationStore navigationStore, IViewModelFactory viewModelFactory, ILoginStore loginStore)
         {
             _loginViewModel = loginViewModel;
             _authorizationService = authorizationService;
             _navigationStore = navigationStore;
             _viewModelFactory = viewModelFactory;
+            _loginStore = loginStore;
         }
 
         public override bool CanExecute(object? parameter) => true;
@@ -35,8 +38,9 @@ namespace PolyclinicApp.WPF.Commands
             try
             {
                 _authorizationService.Login(login, password);
-                if (!_loginViewModel.MessageViewModel.HasMessage)
-                    _navigationStore.CurrentViewModel = _viewModelFactory.CreateViewModel(ViewType.Information);
+                if (_loginViewModel.MessageViewModel.HasMessage) return;
+                _navigationStore.CurrentViewModel = _viewModelFactory.CreateViewModel(ViewType.Information);
+                _loginStore.IsLoggedIn = true;
             }
             catch (UserNotFoundException)
             {

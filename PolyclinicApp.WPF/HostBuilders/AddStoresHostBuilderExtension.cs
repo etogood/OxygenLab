@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PolyclinicApp.WPF.Stores.Login;
 using PolyclinicApp.WPF.Stores.Navigation;
 
 namespace PolyclinicApp.WPF.HostBuilders
@@ -11,6 +12,7 @@ namespace PolyclinicApp.WPF.HostBuilders
             return host.ConfigureServices(services =>
             {
                 services.AddSingleton<INavigationStore, NavigationStore>();
+                services.AddSingleton<ILoginStore, LoginStore>();
             });
         }
     }

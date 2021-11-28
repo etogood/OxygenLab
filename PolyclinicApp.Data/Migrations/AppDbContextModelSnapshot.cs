@@ -49,7 +49,7 @@ namespace PolyclinicApp.Data.Migrations
 
                     b.HasKey("AddressId");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Addresses", (string)null);
                 });
 
             modelBuilder.Entity("PolyclinicApplication.Data.Models.Doctor", b =>
@@ -76,7 +76,7 @@ namespace PolyclinicApp.Data.Migrations
 
                     b.HasIndex("SpecializationId");
 
-                    b.ToTable("Doctors");
+                    b.ToTable("Doctors", (string)null);
                 });
 
             modelBuilder.Entity("PolyclinicApplication.Data.Models.MedicalInsurance", b =>
@@ -99,7 +99,7 @@ namespace PolyclinicApp.Data.Migrations
 
                     b.HasKey("MedicalInsuranceId");
 
-                    b.ToTable("MedicalInsurances");
+                    b.ToTable("MedicalInsurances", (string)null);
                 });
 
             modelBuilder.Entity("PolyclinicApplication.Data.Models.MedicineCard", b =>
@@ -128,7 +128,7 @@ namespace PolyclinicApp.Data.Migrations
 
                     b.HasIndex("PatientId");
 
-                    b.ToTable("MedicineCards");
+                    b.ToTable("MedicineCards", (string)null);
                 });
 
             modelBuilder.Entity("PolyclinicApplication.Data.Models.Passport", b =>
@@ -153,7 +153,7 @@ namespace PolyclinicApp.Data.Migrations
 
                     b.HasKey("PassportId");
 
-                    b.ToTable("Passports");
+                    b.ToTable("Passports", (string)null);
                 });
 
             modelBuilder.Entity("PolyclinicApplication.Data.Models.Patient", b =>
@@ -196,7 +196,7 @@ namespace PolyclinicApp.Data.Migrations
 
                     b.HasIndex("PassportId");
 
-                    b.ToTable("Patients");
+                    b.ToTable("Patients", (string)null);
                 });
 
             modelBuilder.Entity("PolyclinicApplication.Data.Models.Reception", b =>
@@ -225,7 +225,7 @@ namespace PolyclinicApp.Data.Migrations
 
                     b.HasIndex("PatientId");
 
-                    b.ToTable("Receptions");
+                    b.ToTable("Receptions", (string)null);
                 });
 
             modelBuilder.Entity("PolyclinicApplication.Data.Models.Schedule", b =>
@@ -264,7 +264,7 @@ namespace PolyclinicApp.Data.Migrations
 
                     b.HasIndex("DoctorId");
 
-                    b.ToTable("Schedules");
+                    b.ToTable("Schedules", (string)null);
                 });
 
             modelBuilder.Entity("PolyclinicApplication.Data.Models.Specialization", b =>
@@ -281,7 +281,7 @@ namespace PolyclinicApp.Data.Migrations
 
                     b.HasKey("SpecializationId");
 
-                    b.ToTable("Specializations");
+                    b.ToTable("Specializations", (string)null);
                 });
 
             modelBuilder.Entity("PolyclinicApplication.Data.Models.User", b =>
@@ -302,7 +302,7 @@ namespace PolyclinicApp.Data.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("PolyclinicApplication.Data.Models.Doctor", b =>

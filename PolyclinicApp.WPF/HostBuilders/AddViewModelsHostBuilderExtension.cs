@@ -14,6 +14,9 @@ internal static class AddViewModelsHostBuilderExtension
             services.AddSingleton<MainViewModel>();
             services.AddSingleton<ErrorViewModel>();
             services.AddSingleton<MessageViewModel>();
+            services.AddSingleton<NewAppointmentViewModel>();
+            services.AddSingleton<NewPatientViewModel>();
+            services.AddSingleton<DoctorsScheduleViewModel>();
         });
     }
 }

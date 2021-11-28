@@ -6,7 +6,10 @@ namespace PolyclinicApp.WPF.Stores.Navigation
     public enum ViewType
     {
         Login,
-        Information
+        Information,
+        NewPatient,
+        NewAppointment,
+        Schedule
     }
 
     internal interface INavigationStore
