@@ -28,7 +28,9 @@ namespace PolyclinicApp.WPF.Commands
 
         public override void Execute(object? parameter)
         {
-            _navigationStore.CurrentViewModel = _viewModelsService.HasViewModel(_viewModelsService.NewOpenedViewModel) ? _viewModelsService.NewOpenedViewModel : _viewModelFactory.CreateViewModel(ViewType.NewPatient);
+            _navigationStore.CurrentViewModel = _viewModelsService.HasViewModel(ViewType.NewPatient)
+                ? _viewModelsService.GetViewModel(ViewType.NewPatient)
+                : _viewModelFactory.CreateViewModel(ViewType.NewPatient);
         }
     }
 }

@@ -13,7 +13,6 @@ namespace PolyclinicApp.WPF.ViewModels
     {
         public DoctorsScheduleViewModel(IViewModelsService viewModelsService)
         {
-            viewModelsService.NewOpenedViewModel = this;
         }
     }
 }

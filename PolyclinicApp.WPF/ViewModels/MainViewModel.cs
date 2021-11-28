@@ -22,7 +22,7 @@ internal class MainViewModel : ViewModel
 
     #endregion Commands
 
-    public ViewModel? CurrentViewModel => this;
+    public ViewModel? CurrentViewModel => _navigationStore.CurrentViewModel;
 
     public MainViewModel(INavigationStore navigationStore, ILoginStore loginStore, IViewModelFactory viewModelFactory, IViewModelsService viewModelsService)
     {
@@ -30,8 +30,8 @@ internal class MainViewModel : ViewModel
         _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
         loginStore.IsLoggedIn = false;
         NewPatientCommand = new NewPatientCommand(loginStore, navigationStore,  viewModelFactory, viewModelsService);
-        NewAppointmentCommand = new NewAppointmentCommand(loginStore, navigationStore, viewModelFactory);
-        DoctorsScheduleCommand = new DoctorsScheduleCommand(loginStore, navigationStore, viewModelFactory);
+        NewAppointmentCommand = new NewAppointmentCommand(loginStore, navigationStore, viewModelFactory, viewModelsService);
+        DoctorsScheduleCommand = new DoctorsScheduleCommand(loginStore, navigationStore, viewModelFactory, viewModelsService);
         CloseCommand = new CloseCommand();
     }
 

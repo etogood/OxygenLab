@@ -32,14 +32,30 @@ internal class ViewModelFactory : IViewModelFactory
 
     public ViewModels.Base.ViewModel? CreateViewModel(ViewType viewType)
     {
-        return viewType switch
+        switch (viewType)
         {
-            ViewType.Login => new LoginViewModel(_viewModelsService, _errorViewModel, _messageViewModel, _authorizationService, _navigationStore, this, _loginStore),
-            ViewType.Information => new InformationViewModel(_appDbContextFactory, _viewModelsService),
-            ViewType.NewPatient => new NewPatientViewModel(_viewModelsService),
-            ViewType.NewAppointment => new NewAppointmentViewModel(_viewModelsService),
-            ViewType.Schedule => new DoctorsScheduleViewModel(_viewModelsService),
-            _ => throw new ArgumentOutOfRangeException(nameof(viewType), viewType, null)
-        };
+            case ViewType.Login:
+                var login = new LoginViewModel(_viewModelsService, _errorViewModel, _messageViewModel, _authorizationService, _navigationStore, this, _loginStore);
+                _viewModelsService.OpenedViewModels.Add(ViewType.Login, login);
+                return login;
+            case ViewType.Information:
+                var information = new InformationViewModel(_appDbContextFactory, _viewModelsService);
+                _viewModelsService.OpenedViewModels.Add(ViewType.Information, information);
+                return information;
+            case ViewType.NewPatient:
+                var newPatient = new NewPatientViewModel(_navigationStore, this, _viewModelsService);
+                _viewModelsService.OpenedViewModels.Add(ViewType.NewPatient, newPatient);
+                return newPatient;
+            case ViewType.NewAppointment:
+                var newAppointment = new NewAppointmentViewModel(_viewModelsService);
+                _viewModelsService.OpenedViewModels.Add(ViewType.NewAppointment, newAppointment);
+                return newAppointment;
+            case ViewType.Schedule:
+                var schedule = new DoctorsScheduleViewModel(_viewModelsService);
+                _viewModelsService.OpenedViewModels.Add(ViewType.Schedule, schedule);
+                return schedule;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(viewType), viewType, null);
+        }
     }
 }

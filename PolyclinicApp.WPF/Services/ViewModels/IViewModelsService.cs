@@ -7,10 +7,11 @@ namespace PolyclinicApp.WPF.Services.ViewModels;
 
 internal interface IViewModelsService
 {
-    List<ViewModel> OpenedViewModels { get; set; }
-    ViewModel NewOpenedViewModel { get; set; }
-    bool HasViewModel(ViewModel viewModel);
-    event Action? NewViewModelOpened;
+    Dictionary<ViewType, ViewModel?> OpenedViewModels { get; set; }
 
+    public bool HasViewModel(ViewType viewType);
 
+    public ViewModel? GetViewModel(ViewType viewType);
+
+    public Dictionary<ViewType, ViewModel?>.ValueCollection GetAllViewModels();
 }

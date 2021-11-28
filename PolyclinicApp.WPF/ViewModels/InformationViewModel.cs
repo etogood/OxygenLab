@@ -43,7 +43,7 @@ internal class InformationViewModel : ViewModel
             );
         }
 
-        viewModelsService.NewOpenedViewModel = this;
+
     }
 
     #endregion Ctor

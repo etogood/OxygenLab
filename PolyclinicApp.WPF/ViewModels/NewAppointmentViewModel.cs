@@ -13,7 +13,7 @@ namespace PolyclinicApp.WPF.ViewModels
     {
         public NewAppointmentViewModel(IViewModelsService viewModelsService)
         {
-            viewModelsService.NewOpenedViewModel = this;
+
         }
     }
 }

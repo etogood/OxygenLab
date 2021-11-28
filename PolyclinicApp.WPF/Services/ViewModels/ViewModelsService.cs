@@ -1,39 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using PolyclinicApp.WPF.Factories.ViewModel;
 using PolyclinicApp.WPF.Stores.Navigation;
 using PolyclinicApp.WPF.ViewModels.Base;
 
 namespace PolyclinicApp.WPF.Services.ViewModels
 {
-    internal class ViewModelsService : IViewModelsService
+    internal sealed class ViewModelsService : IViewModelsService
     {
-        public List<ViewModel> OpenedViewModels { get; set; }
+        public Dictionary<ViewType, ViewModel?> OpenedViewModels { get; set; }
 
-        private ViewModel _newOpenedViewModel;
-        public ViewModel NewOpenedViewModel
+        public bool HasViewModel(ViewType viewType) => OpenedViewModels.ContainsKey(viewType);
+
+        public ViewModel? GetViewModel(ViewType viewType)
         {
-            get => _newOpenedViewModel;
-            set
-            {
-                _newOpenedViewModel = value;
-                OnViewModelOpened();
-            }
+            OpenedViewModels.TryGetValue(viewType, out var viewModel);
+            return viewModel;
         }
 
-        public event Action? NewViewModelOpened;
-
-        protected virtual void OnViewModelOpened()
-        {
-            if (OpenedViewModels.Contains(_newOpenedViewModel)) return;
-            NewViewModelOpened?.Invoke();
-            OpenedViewModels.Add(_newOpenedViewModel);
-        }
-
-        public bool HasViewModel(ViewModel viewModel) => OpenedViewModels.Contains(viewModel);
+        public Dictionary<ViewType, ViewModel?>.ValueCollection GetAllViewModels() => OpenedViewModels.Values;
 
         public ViewModelsService()
         {
-            OpenedViewModels = new List<ViewModel>();
+
+            OpenedViewModels = new Dictionary<ViewType, ViewModel?>();
         }
     }
 }

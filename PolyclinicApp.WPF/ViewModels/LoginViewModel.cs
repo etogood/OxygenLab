@@ -55,7 +55,6 @@ internal class LoginViewModel : ViewModel
 
     public LoginViewModel(IViewModelsService viewModelsService,ErrorViewModel errorViewModel, MessageViewModel messageViewModel, IAuthorizationService authorizationService, INavigationStore navigationStore, IViewModelFactory viewModelFactory, ILoginStore loginStore)
     {
-        viewModelsService.NewOpenedViewModel = this;
         _errorViewModel = errorViewModel;
         MessageViewModel = messageViewModel;
         LogInCommand = new LogInCommand(this, authorizationService, navigationStore, viewModelFactory, loginStore);
