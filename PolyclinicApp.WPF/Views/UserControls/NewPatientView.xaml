@@ -19,37 +19,38 @@
         <StackPanel Grid.Column="0" Margin="0 40 0 0">
             <StackPanel Margin="0 40 0 0">
                 <Label Content="Личные данные" HorizontalAlignment="Center" FontWeight="Bold" />
-                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Фамилия"  />
-                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Имя" />
-                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Отчество" />
-                <DatePicker Width="200" Style="{StaticResource DatePickerPlaceHolder}" Tag="Дата рождения" />
+                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Фамилия" Text="{Binding Surname}"/>
+                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Имя" Text="{Binding FirstName}"/>
+                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Отчество" Text="{Binding Patronymic}"/>
+                <DatePicker Width="200" Style="{StaticResource DatePickerPlaceHolder}" Tag="Дата рождения" Text="{Binding DateOfBirth}"/>
             </StackPanel>
 
             <StackPanel Margin="0 40 0 0">
                 <Label Content="Адрес" HorizontalAlignment="Center" FontWeight="DemiBold" Foreground="DimGray" />
-                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Город" />
-                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Улица" />
-                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Дом" />
-                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Дополнительно*" />
+                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Город" Text="{Binding AddressCity}"/>
+                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Улица" Text="{Binding AddressStreet}"/>
+                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Дом" Text="{Binding AddressHouse}"/>
+                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Дополнительно*" Text="{Binding AddressOther}"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="0 40 0 0">
             <StackPanel Margin="0 40 0 0">
                 <Label Content="Паспортные данные" HorizontalAlignment="Center" FontWeight="Bold" />
-                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Серия и номер"  />
-                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Кем выдан" />
-                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Дата выдачи" />
-                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Код подразделения" />
+                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Серия и номер"  Text="{Binding PassportNumber}"/>
+                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Кем выдан" Text="{Binding PassportExtraditionPlace}"/>
+                <DatePicker Width="200" Style="{StaticResource DatePickerPlaceHolder}" Tag="Дата выдачи" Text="{Binding PassportDate}"/>
+                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Код подразделения" Text="{Binding PassportCode}"/>
             </StackPanel>
             <StackPanel Margin="0 40 0 0">
                 <Label Content="Страховые данные" HorizontalAlignment="Center" FontWeight="Bold" />
-                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Номер мед. страховки"  />
-                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Дата выдачи" />
-                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Страховая компания" />
-                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="СНИЛС" />
+                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Номер мед. страховки"  Text="{Binding MedicalInsuranceNumber}"/>
+                <DatePicker Width="200" Style="{StaticResource DatePickerPlaceHolder}" Tag="Дата выдачи" Text="{Binding DateOfIssue}"/>
+                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Страховая компания" Text="{Binding InsuranceCompanyName}"/>
+                <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="СНИЛС" Text="{Binding Iipan}"/>
             </StackPanel>
         </StackPanel>
-        <Button Content="Создать" Grid.ColumnSpan="2" Grid.Column="0" Width="100" />
+        <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" Grid.ColumnSpan="2" Width="300" Height="50" VerticalAlignment="Bottom" TextAlignment="Center"/>
+        <Button Content="Создать" Grid.ColumnSpan="2" Grid.Column="0" Width="100" Command="{Binding CreateNewPatientCommand}"/>
         <Button Content="Назад" Grid.ColumnSpan="2" Grid.Column="0" Width="100" Margin="0 100 0 0" Style="{StaticResource MaterialDesignFlatButton}" Command="{Binding InformationViewCommand}"/>
     </Grid>
 </UserControl>

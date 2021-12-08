@@ -5,7 +5,6 @@ using PolyclinicApp.WPF.Stores.Navigation;
 using PolyclinicApp.WPF.ViewModels.Base;
 using System.Collections;
 using System.Windows.Input;
-using PolyclinicApp.WPF.Services.ViewModels;
 using PolyclinicApp.WPF.Stores.Login;
 
 namespace PolyclinicApp.WPF.ViewModels;
@@ -49,11 +48,13 @@ internal class LoginViewModel : ViewModel
         set => MessageViewModel.Message = value;
     }
 
+    
+
     #endregion Properties
 
     #region Ctor
 
-    public LoginViewModel(IViewModelsService viewModelsService,ErrorViewModel errorViewModel, MessageViewModel messageViewModel, IAuthorizationService authorizationService, INavigationStore navigationStore, IViewModelFactory viewModelFactory, ILoginStore loginStore)
+    public LoginViewModel(ErrorViewModel errorViewModel, MessageViewModel messageViewModel, IAuthorizationService authorizationService, INavigationStore navigationStore, IViewModelFactory viewModelFactory, ILoginStore loginStore)
     {
         _errorViewModel = errorViewModel;
         MessageViewModel = messageViewModel;

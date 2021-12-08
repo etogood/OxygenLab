@@ -9,18 +9,10 @@ namespace PolyclinicApp.WPF.Commands
 
         public override void Execute(object? parameter)
         {
-            var result = MessageBox.Show("Вы действительно хойтите выйти?", "Подтвердите действие", MessageBoxButton.YesNoCancel, MessageBoxImage.Question, MessageBoxResult.No);
-            
-            
-            switch (result)
-            {
-                case MessageBoxResult.Yes:
-                    Application.Current.Shutdown();
-                    break;
-                case MessageBoxResult.Cancel:
-                    MessageBox.Show("kek");
-                    break;
-            }
+            var result = MessageBox.Show("Вы действительно хойтите выйти?", "Подтвердите действие", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
+
+            if (result == MessageBoxResult.Yes)
+                Application.Current.Shutdown();
         }
     }
 }

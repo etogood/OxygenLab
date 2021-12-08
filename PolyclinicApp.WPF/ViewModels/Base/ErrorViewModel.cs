@@ -8,8 +8,9 @@ namespace PolyclinicApp.WPF.ViewModels.Base
 {
     internal class ErrorViewModel : INotifyDataErrorInfo
     {
-        private readonly Dictionary<string, List<string>> _errors;
-        public bool HasErrors => _errors.Any();
+        private readonly Dictionary<string, List<string>> _errors = new();
+        public bool HasErrors => 
+        _errors.Any();
 
         public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
 

@@ -10,7 +10,6 @@ internal static class AddCommandsHostBuilderExtension
     {
         return host.ConfigureServices(services =>
         {
-            services.AddSingleton<NavigationCommand>();
             services.AddSingleton<LogInCommand>();
             services.AddSingleton<CloseCommand>();
             services.AddSingleton<DoctorsScheduleCommand>();

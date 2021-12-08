@@ -7,7 +7,6 @@ using System.Windows.Documents;
 using Microsoft.EntityFrameworkCore;
 using PolyclinicApp.Data.DataAccess;
 using PolyclinicApp.WPF.Factories.ViewModel;
-using PolyclinicApp.WPF.Services.ViewModels;
 using PolyclinicApp.WPF.Stores.Navigation;
 using PolyclinicApp.WPF.ViewModels.Base;
 using PolyclinicApplication.Data.Models;
@@ -32,7 +31,7 @@ internal class InformationViewModel : ViewModel
 
     #region Ctor
 
-    public InformationViewModel(AppDbContextFactory appDbContextFactory, IViewModelsService viewModelsService)
+    public InformationViewModel(AppDbContextFactory appDbContextFactory)
     {
         AppDbContext appDbContext;
         using (appDbContext = appDbContextFactory.CreateDbContext(null))
