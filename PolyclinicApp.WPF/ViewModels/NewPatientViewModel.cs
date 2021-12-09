@@ -16,6 +16,7 @@ namespace PolyclinicApp.WPF.ViewModels
         private readonly ErrorViewModel _errorViewModel;
 
         #endregion
+
         #region Commands
         public ICommand? InformationViewCommand { get; }
         public ICommand? CreateNewPatientCommand { get; }
@@ -173,14 +174,14 @@ namespace PolyclinicApp.WPF.ViewModels
             }
         }
 
-        private DateTime _passportDateTime;
+        private DateTime _passportDate;
 
         public DateTime PassportDate
         {
-            get => _passportDateTime;
+            get => _passportDate;
             set
             {
-                if (!Set(ref _passportDateTime, value)) return;
+                if (!Set(ref _passportDate, value)) return;
                 _errorViewModel.ClearErrors(nameof(PassportDate));
                 if (PassportDate == DateTime.MinValue)
                     _errorViewModel.AddError(nameof(PassportDate), "Заполните поле");
@@ -285,26 +286,23 @@ namespace PolyclinicApp.WPF.ViewModels
         }
         #endregion
 
-        #region Errors
+        #region Methods
 
         public bool ArePropertiesNull() => string.IsNullOrEmpty(_surname)
-                                           || string.IsNullOrEmpty(FirstName)
-                                           || string.IsNullOrEmpty(Patronymic)
-                                           || DateOfBirth == DateTime.MinValue
-                                           || string.IsNullOrEmpty(AddressCity)
-                                           || string.IsNullOrEmpty(AddressHouse)
-                                           || string.IsNullOrEmpty(AddressOther)
-                                           || string.IsNullOrEmpty(AddressStreet)
-                                           || string.IsNullOrEmpty(PassportNumber)
-                                           || string.IsNullOrEmpty(PassportExtraditionPlace)
-                                           || string.IsNullOrEmpty(PassportCode)
-                                           || PassportDate == DateTime.MinValue
-                                           || MedicalInsuranceNumber != null
-                                           || string.IsNullOrEmpty(InsuranceCompanyName)
-                                           || string.IsNullOrEmpty(Iipan)
-                                           || DateOfIssue == DateTime.MinValue;
-
-
+                                           || string.IsNullOrEmpty(_firstName)
+                                           || string.IsNullOrEmpty(_patronymic)
+                                           || _dateOfBirth == DateTime.MinValue
+                                           || string.IsNullOrEmpty(_addressCity)
+                                           || string.IsNullOrEmpty(_addressHouse)
+                                           || string.IsNullOrEmpty(_addressStreet)
+                                           || string.IsNullOrEmpty(_passportNumber)
+                                           || string.IsNullOrEmpty(_passportExtraditionPlace)
+                                           || string.IsNullOrEmpty(_passportCode)
+                                           || _passportDate == DateTime.MinValue
+                                           || _medicalInsuranceNumber != null
+                                           || string.IsNullOrEmpty(_insuranceCompanyName)
+                                           || string.IsNullOrEmpty(_iipan)
+                                           || _dateOfIssue == DateTime.MinValue;
 
         #endregion
     }

@@ -22,7 +22,7 @@
                 <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Фамилия" Text="{Binding Surname}"/>
                 <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Имя" Text="{Binding FirstName}"/>
                 <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Отчество" Text="{Binding Patronymic}"/>
-                <DatePicker Width="200" Style="{StaticResource DatePickerPlaceHolder}" Tag="Дата рождения" Text="{Binding DateOfBirth}"/>
+                <DatePicker Width="200" Style="{StaticResource DatePickerPlaceHolder}" Tag="Дата рождения" DisplayDate="{Binding DateOfBirth}"/>
             </StackPanel>
 
             <StackPanel Margin="0 40 0 0">
@@ -38,13 +38,13 @@
                 <Label Content="Паспортные данные" HorizontalAlignment="Center" FontWeight="Bold" />
                 <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Серия и номер"  Text="{Binding PassportNumber}"/>
                 <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Кем выдан" Text="{Binding PassportExtraditionPlace}"/>
-                <DatePicker Width="200" Style="{StaticResource DatePickerPlaceHolder}" Tag="Дата выдачи" Text="{Binding PassportDate}"/>
+                <DatePicker Width="200" Style="{StaticResource DatePickerPlaceHolder}" Tag="Дата выдачи" DisplayDate="{Binding PassportDate}"/>
                 <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Код подразделения" Text="{Binding PassportCode}"/>
             </StackPanel>
             <StackPanel Margin="0 40 0 0">
                 <Label Content="Страховые данные" HorizontalAlignment="Center" FontWeight="Bold" />
                 <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Номер мед. страховки"  Text="{Binding MedicalInsuranceNumber}"/>
-                <DatePicker Width="200" Style="{StaticResource DatePickerPlaceHolder}" Tag="Дата выдачи" Text="{Binding DateOfIssue}"/>
+                <DatePicker Width="200" Style="{StaticResource DatePickerPlaceHolder}" Tag="Дата выдачи" DisplayDate="{Binding DateOfIssue}"/>
                 <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="Страховая компания" Text="{Binding InsuranceCompanyName}"/>
                 <TextBox Width="200" Style="{StaticResource TextBoxPlaceHolder}" Tag="СНИЛС" Text="{Binding Iipan}"/>
             </StackPanel>

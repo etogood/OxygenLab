@@ -18,7 +18,11 @@ namespace PolyclinicApp.WPF.Commands
             _viewModel = viewModel;
         }
 
-        public override bool CanExecute(object? parameter) => !_viewModel.ArePropertiesNull();
+        public override bool CanExecute(object? parameter)
+        {
+            bool v = !_viewModel.ArePropertiesNull();
+            return !_viewModel.ArePropertiesNull();
+        }
 
         public override void Execute(object? parameter)
         {

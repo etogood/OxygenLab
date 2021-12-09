@@ -3,6 +3,8 @@ using PolyclinicApp.WPF.Stores.Navigation;
 using PolyclinicApp.WPF.ViewModels;
 using PolyclinicApp.WPF.ViewModels.Base;
 using System;
+using System.Windows.Media.Media3D;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PolyclinicApp.Data.DataAccess;
 using PolyclinicApp.WPF.Stores.Login;
@@ -34,11 +36,11 @@ internal class ViewModelFactory : IViewModelFactory
     {
         return viewType switch
         {
-            ViewType.Login => new LoginViewModel(_errorViewModel, _messageViewModel, _authorizationService, _navigationStore, this, _loginStore),
-            ViewType.Information => new InformationViewModel(_appDbContextFactory),
-            ViewType.NewPatient => new NewPatientViewModel(_navigationStore, this, _errorViewModel, _host),
-            ViewType.NewAppointment => new NewAppointmentViewModel(),
-            ViewType.Schedule => new DoctorsScheduleViewModel(),
+            ViewType.Login => _host.Services.GetRequiredService<LoginViewModel>(),
+            ViewType.Information => _host.Services.GetRequiredService<InformationViewModel>(),
+            ViewType.NewPatient => _host.Services.GetRequiredService<NewPatientViewModel>(),
+            ViewType.NewAppointment => _host.Services.GetRequiredService<NewAppointmentViewModel>(),
+            ViewType.Schedule => _host.Services.GetRequiredService<DoctorsScheduleViewModel>(),
             _ => throw new ArgumentOutOfRangeException(nameof(viewType), viewType, null)
         };
     }

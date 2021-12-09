@@ -12,6 +12,7 @@ internal static class AddViewModelsHostBuilderExtension
         return host.ConfigureServices(services =>
         {
             services.AddSingleton<MainViewModel>();
+            services.AddSingleton<LoginViewModel>();
             services.AddSingleton<ErrorViewModel>();
             services.AddSingleton<MessageViewModel>();
             services.AddSingleton<InformationViewModel>();
