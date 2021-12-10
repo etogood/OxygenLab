@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PolyclinicApp.WPF.Commands.Base;
 using PolyclinicApp.WPF.Factories.ViewModel;
@@ -16,19 +11,18 @@ namespace PolyclinicApp.WPF.Commands
     {
         private readonly INavigationStore _navigationStore;
         private readonly IViewModelFactory _viewModelFactory;
-        private readonly IHost _host;
 
-        public InformationViewCommand(INavigationStore navigationStore, IViewModelFactory viewModelFactory, IHost host)
+        public InformationViewCommand(IHost host)
         {
-            _navigationStore = navigationStore;
-            _viewModelFactory = viewModelFactory;
-            _host = host;
+            _navigationStore = host.Services.GetRequiredService<INavigationStore>();
+            _viewModelFactory = host.Services.GetRequiredService<IViewModelFactory>();
         }
+
         public override bool CanExecute(object? parameter) => true;
 
         public override void Execute(object? parameter)
         {
-            _navigationStore.CurrentViewModel = _host.Services.GetRequiredService<InformationViewModel>();
+            _navigationStore.CurrentViewModel = _viewModelFactory.CreateViewModel(ViewType.Information);
         }
     }
 }

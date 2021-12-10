@@ -15,21 +15,19 @@ namespace PolyclinicApp.WPF.Commands
         private readonly ILoginStore _loginStore;
         private readonly INavigationStore _navigationStore;
         private readonly IViewModelFactory _viewModelFactory;
-        private readonly IHost _host;
 
-        public NewPatientCommand(ILoginStore loginStore, INavigationStore navigationStore, IViewModelFactory viewModelFactory, IHost host)
+        public NewPatientCommand(IHost host)
         {
-            _loginStore = loginStore;
-            _navigationStore = navigationStore;
-            _viewModelFactory = viewModelFactory;
-            _host = host;
+            _loginStore = host.Services.GetRequiredService<ILoginStore>();
+            _navigationStore = host.Services.GetRequiredService<INavigationStore>();
+            _viewModelFactory = host.Services.GetRequiredService<IViewModelFactory>();
         }
 
         public override bool CanExecute(object? parameter) => _loginStore.IsLoggedIn;
 
         public override void Execute(object? parameter)
         {
-            _navigationStore.CurrentViewModel = _host.Services.GetRequiredService<NewPatientViewModel>();
+            _navigationStore.CurrentViewModel = _viewModelFactory.CreateViewModel(ViewType.NewPatient);
         }
     }
 }

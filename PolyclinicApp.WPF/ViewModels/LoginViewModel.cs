@@ -6,6 +6,8 @@ using PolyclinicApp.WPF.ViewModels.Base;
 using System.Collections;
 using System.Windows.Input;
 using PolyclinicApp.WPF.Stores.Login;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace PolyclinicApp.WPF.ViewModels;
 
@@ -54,11 +56,11 @@ internal class LoginViewModel : ViewModel
 
     #region Ctor
 
-    public LoginViewModel(ErrorViewModel errorViewModel, MessageViewModel messageViewModel, IAuthorizationService authorizationService, INavigationStore navigationStore, IViewModelFactory viewModelFactory, ILoginStore loginStore)
+    public LoginViewModel(IHost host)
     {
-        _errorViewModel = errorViewModel;
-        MessageViewModel = messageViewModel;
-        LogInCommand = new LogInCommand(this, authorizationService, navigationStore, viewModelFactory, loginStore);
+        _errorViewModel = host.Services.GetRequiredService<ErrorViewModel>();
+        MessageViewModel = host.Services.GetRequiredService<MessageViewModel>();
+        LogInCommand = host.Services.GetRequiredService<LogInCommand>();
     }
 
     #endregion Ctor

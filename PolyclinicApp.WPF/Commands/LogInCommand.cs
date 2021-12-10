@@ -6,24 +6,26 @@ using PolyclinicApp.WPF.Stores.Navigation;
 using PolyclinicApp.WPF.ViewModels;
 using System;
 using PolyclinicApp.WPF.Stores.Login;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace PolyclinicApp.WPF.Commands
 {
     internal class LogInCommand : BaseCommand
     {
-        private readonly IAuthorizationService _authorizationService;
         private readonly INavigationStore _navigationStore;
+        private readonly IAuthorizationService _authorizationService;
         private readonly IViewModelFactory _viewModelFactory;
         private readonly ILoginStore _loginStore;
         private readonly LoginViewModel _loginViewModel;
 
-        public LogInCommand(LoginViewModel loginViewModel, IAuthorizationService authorizationService, INavigationStore navigationStore, IViewModelFactory viewModelFactory, ILoginStore loginStore)
+        public LogInCommand(IHost host)
         {
-            _loginViewModel = loginViewModel;
-            _authorizationService = authorizationService;
-            _navigationStore = navigationStore;
-            _viewModelFactory = viewModelFactory;
-            _loginStore = loginStore;
+            _loginViewModel = host.Services.GetRequiredService<LoginViewModel>();
+            _authorizationService = host.Services.GetRequiredService<IAuthorizationService>();
+            _navigationStore = host.Services.GetRequiredService<INavigationStore>();
+            _viewModelFactory = host.Services.GetRequiredService<IViewModelFactory>();
+            _loginStore = host.Services.GetRequiredService<ILoginStore>();
         }
 
         public override bool CanExecute(object? parameter) => true;

@@ -3,14 +3,7 @@ using System;
 
 namespace PolyclinicApp.WPF.Stores.Navigation
 {
-    public enum ViewType
-    {
-        Login,
-        Information,
-        NewPatient,
-        NewAppointment,
-        Schedule
-    }
+    
 
     internal interface INavigationStore
     {

@@ -5,6 +5,7 @@ using PolyclinicApp.WPF.Stores.Navigation;
 using PolyclinicApp.WPF.ViewModels.Base;
 using System.Windows.Input;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace PolyclinicApp.WPF.ViewModels
 {
@@ -278,11 +279,11 @@ namespace PolyclinicApp.WPF.ViewModels
         #endregion
 
         #region Ctor
-        public NewPatientViewModel(INavigationStore navigationStore, IViewModelFactory viewModelFactory, ErrorViewModel errorViewModel, IHost host)
+        public NewPatientViewModel(IHost host)
         {
-            _errorViewModel = errorViewModel;
-            InformationViewCommand = new InformationViewCommand(navigationStore, viewModelFactory, host);
-            CreateNewPatientCommand = new CreateNewPatientCommand(this);
+            _errorViewModel = host.Services.GetRequiredService<ErrorViewModel>();
+            InformationViewCommand = host.Services.GetRequiredService<InformationViewCommand>();
+            CreateNewPatientCommand = host.Services.GetRequiredService<CreateNewPatientCommand>();
         }
         #endregion
 

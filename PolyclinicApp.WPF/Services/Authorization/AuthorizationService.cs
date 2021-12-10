@@ -1,4 +1,6 @@
-﻿using PolyclinicApp.WPF.Exceptions;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using PolyclinicApp.WPF.Exceptions;
 using PolyclinicApp.WPF.Services.Users;
 using PolyclinicApplication.Data.Models;
 
@@ -8,9 +10,9 @@ namespace PolyclinicApp.WPF.Services.Authorization
     {
         private readonly IDataService<User> _usersService;
 
-        public AuthorizationService(IDataService<User> usersService)
+        public AuthorizationService(IHost host)
         {
-            _usersService = usersService;
+            _usersService = host.Services.GetRequiredService<IDataService<User>>();
         }
 
         public User Login(string login, string password)

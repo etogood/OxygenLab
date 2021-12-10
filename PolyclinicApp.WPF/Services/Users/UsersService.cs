@@ -1,19 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using PolyclinicApp.Data.DataAccess;
 using PolyclinicApplication.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace PolyclinicApp.WPF.Services.Users
 {
-    internal class UsersService : IDataService<User>
+    internal class UsersService : IDataService<User>, IDisposable
     {
         private readonly AppDbContext _context;
 
-        public UsersService(AppDbContextFactory appDbContextFactory)
+        public UsersService(IHost host)
         {
-            _context = appDbContextFactory.CreateDbContext(null);
+            _context = host.Services.GetRequiredService<AppDbContextFactory>().CreateDbContext(null);
         }
 
         public async Task Create(User user)
@@ -44,6 +47,11 @@ namespace PolyclinicApp.WPF.Services.Users
         public User? GetByLogin(string login)
         {
             return _context.Users!.FirstOrDefault(x => x.Login == login);
+        }
+
+        public void Dispose()
+        {
+            _context.Dispose();
         }
     }
 }

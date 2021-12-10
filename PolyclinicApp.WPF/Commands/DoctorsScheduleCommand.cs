@@ -11,27 +11,22 @@ namespace PolyclinicApp.WPF.Commands
 {
     internal class DoctorsScheduleCommand : BaseCommand
     {
-        private readonly ILoginStore _loginStore;
         private readonly INavigationStore _navigationStore;
         private readonly IViewModelFactory _viewModelFactory;
-        private readonly IHost _host;
+        private readonly ILoginStore _loginStore;
 
-        public DoctorsScheduleCommand(ILoginStore loginStore, INavigationStore navigationStore, IViewModelFactory viewModelFactory, IHost host)
+        public DoctorsScheduleCommand(IHost host)
         {
-            _loginStore = loginStore;
-            _navigationStore = navigationStore;
-            _viewModelFactory = viewModelFactory;
-            _host = host;
+            _navigationStore = host.Services.GetRequiredService<INavigationStore>();
+            _viewModelFactory = host.Services.GetRequiredService<IViewModelFactory>();
+            _loginStore = host.Services.GetRequiredService<ILoginStore>();
         }
 
         public override bool CanExecute(object? parameter) => _loginStore.IsLoggedIn;
 
         public override void Execute(object? parameter)
         {
-            _navigationStore.CurrentViewModel = _host.Services.GetRequiredService<DoctorsScheduleViewModel>();
-            // _navigationStore.CurrentViewModel = _viewModelsService.HasViewModel(ViewType.Schedule)
-            //     ? _viewModelsService.GetViewModel(ViewType.Schedule)
-            //     : _viewModelFactory.CreateViewModel(ViewType.Schedule);
+            _navigationStore.CurrentViewModel = _viewModelFactory.CreateViewModel(ViewType.Schedule);
         }
     }
 }

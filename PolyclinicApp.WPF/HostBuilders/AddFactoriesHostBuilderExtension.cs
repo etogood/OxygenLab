@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PolyclinicApp.WPF.Factories.Command;
 using PolyclinicApp.WPF.Factories.ViewModel;
 
 namespace PolyclinicApp.WPF.HostBuilders;
@@ -11,6 +12,7 @@ internal static class AddFactoriesHostBuilderExtension
         return host.ConfigureServices(services =>
         {
             services.AddSingleton<IViewModelFactory, ViewModelFactory>();
+            services.AddSingleton<ICommandFactory, CommandFactory>();
         });
     }
 }

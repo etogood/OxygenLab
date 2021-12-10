@@ -5,6 +5,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Windows.Documents;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using PolyclinicApp.Data.DataAccess;
 using PolyclinicApp.WPF.Factories.ViewModel;
 using PolyclinicApp.WPF.Stores.Navigation;
@@ -31,10 +33,9 @@ internal class InformationViewModel : ViewModel
 
     #region Ctor
 
-    public InformationViewModel(AppDbContextFactory appDbContextFactory)
+    public InformationViewModel(IHost host)
     {
-        AppDbContext appDbContext;
-        using (appDbContext = appDbContextFactory.CreateDbContext(null))
+        using (var appDbContext = host.Services.GetRequiredService<AppDbContextFactory>().CreateDbContext(null))
         {
             _ordersTable = new ObservableCollection<MedicineCard>(appDbContext.MedicineCards!
                 .Include(x => x.Patient)
