@@ -14,25 +14,25 @@ namespace PolyclinicApplication.Data.Models
         public int DoctorId { get; set; }
 
         [DataType(DataType.Time)]
-        public DateTime Monday { get; set; }
+        public DateTime? Monday { get; set; }
 
         [DataType(DataType.Time)]
-        public DateTime Tuesday { get; set; }
+        public DateTime? Tuesday { get; set; }
 
         [DataType(DataType.Time)]
-        public DateTime Wednesday { get; set; }
+        public DateTime? Wednesday { get; set; }
 
         [DataType(DataType.Time)]
-        public DateTime Thursday { get; set; }
+        public DateTime? Thursday { get; set; }
 
         [DataType(DataType.Time)]
-        public DateTime Friday { get; set; }
+        public DateTime? Friday { get; set; }
 
         [DataType(DataType.Time)]
-        public DateTime Saturday { get; set; }
+        public DateTime? Saturday { get; set; }
 
         [DataType(DataType.Time)]
-        public DateTime Sunday { get; set; }
+        public DateTime? Sunday { get; set; }
 
         [ForeignKey("DoctorId")]
         public Doctor Doctor { get; set; }

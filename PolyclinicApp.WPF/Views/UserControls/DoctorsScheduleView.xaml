@@ -7,6 +7,17 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            <TextBlock Text="schedule"/>
+        <DataGrid AutoGenerateColumns="False" ColumnWidth="*" ItemsSource="{Binding ScheduleTable}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Врач" Binding="{Binding Doctor.FullName}"/>
+                <DataGridTextColumn Header="Понедельник" Binding="{Binding Schedule.Monday}"/>
+                <DataGridTextColumn Header="Вторник" Binding="{Binding Schedule.Tuesday}"/>
+                <DataGridTextColumn Header="Среда" Binding="{Binding Schedule.Wednesday}"/>
+                <DataGridTextColumn Header="Четверг" Binding="{Binding Schedule.Thursday}"/>
+                <DataGridTextColumn Header="Пятница" Binding="{Binding Schedule.Friday}"/>
+                <DataGridTextColumn Header="Суббота" Binding="{Binding Schedule.Saturday}"/>
+                <DataGridTextColumn Header="Воскресенье" Binding="{Binding Schedule.Sunday}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

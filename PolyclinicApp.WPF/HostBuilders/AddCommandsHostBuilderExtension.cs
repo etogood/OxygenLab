@@ -17,6 +17,7 @@ internal static class AddCommandsHostBuilderExtension
             services.AddSingleton<NewPatientCommand>();
             services.AddSingleton<InformationViewCommand>();
             services.AddSingleton<CreateNewPatientCommand>();
+            services.AddSingleton<CreateNewAppointmentCommand>();
         });
     }
 }

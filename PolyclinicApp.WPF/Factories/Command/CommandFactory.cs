@@ -25,7 +25,7 @@ namespace PolyclinicApp.WPF.Factories.Command
                 CommandType.OpenNewAppointment => _host.Services.GetRequiredService<NewAppointmentCommand>(),
                 CommandType.OpenInfo => _host.Services.GetRequiredService<InformationViewCommand>(),
                 CommandType.CreateNewPatient => _host.Services.GetRequiredService<CreateNewPatientCommand>(),
-                CommandType.CreateNewAppointment => throw new NotImplementedException(),
+                CommandType.CreateNewAppointment => _host.Services.GetRequiredService<CreateNewAppointmentCommand>(),
                 _ => throw new ArgumentOutOfRangeException(nameof(commandType), commandType, "Unknown CommandType")
             };
         }
