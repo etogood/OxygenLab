@@ -10,7 +10,7 @@ namespace PolyclinicApplication.Data.Models
         public int MedicalInsuranceId { get; set; }
 
         [Required]
-        public long MedicalInsuranceNumber { get; set; }
+        public long? MedicalInsuranceNumber { get; set; }
 
         [Required]
         public DateTime DateOfIssue { get; set; }

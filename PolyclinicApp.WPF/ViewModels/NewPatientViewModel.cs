@@ -284,26 +284,47 @@ namespace PolyclinicApp.WPF.ViewModels
             _errorViewModel = host.Services.GetRequiredService<ErrorViewModel>();
             InformationViewCommand = host.Services.GetRequiredService<InformationViewCommand>();
             CreateNewPatientCommand = host.Services.GetRequiredService<CreateNewPatientCommand>();
+            MessageViewModel = host.Services.GetRequiredService<MessageViewModel>();
         }
         #endregion
 
         #region Methods
 
-        public bool ArePropertiesNull() => string.IsNullOrEmpty(_surname)
-                                           || string.IsNullOrEmpty(_firstName)
-                                           || string.IsNullOrEmpty(_patronymic)
-                                           || _dateOfBirth == DateTime.MinValue
-                                           || string.IsNullOrEmpty(_addressCity)
-                                           || string.IsNullOrEmpty(_addressHouse)
-                                           || string.IsNullOrEmpty(_addressStreet)
-                                           || string.IsNullOrEmpty(_passportNumber)
-                                           || string.IsNullOrEmpty(_passportExtraditionPlace)
-                                           || string.IsNullOrEmpty(_passportCode)
-                                           || _passportDate == DateTime.MinValue
-                                           || _medicalInsuranceNumber != null
-                                           || string.IsNullOrEmpty(_insuranceCompanyName)
-                                           || string.IsNullOrEmpty(_iipan)
-                                           || _dateOfIssue == DateTime.MinValue;
+        public bool ArePropertiesNull() => !string.IsNullOrEmpty(_surname)
+                                           && !string.IsNullOrEmpty(_firstName)
+                                           && !string.IsNullOrEmpty(_patronymic)
+                                           && _dateOfBirth != DateTime.MinValue
+                                           && !string.IsNullOrEmpty(_addressCity)
+                                           && !string.IsNullOrEmpty(_addressHouse)
+                                           && !string.IsNullOrEmpty(_addressStreet)
+                                           && !string.IsNullOrEmpty(_passportNumber)
+                                           && !string.IsNullOrEmpty(_passportExtraditionPlace)
+                                           && !string.IsNullOrEmpty(_passportCode)
+                                           && _passportDate != DateTime.MinValue
+                                           && _medicalInsuranceNumber != null
+                                           && !string.IsNullOrEmpty(_insuranceCompanyName)
+                                           && !string.IsNullOrEmpty(_iipan)
+                                           && _dateOfIssue != DateTime.MinValue;
+
+        public void Clear()
+        {
+            Surname = string.Empty;
+            FirstName = string.Empty;
+            Patronymic = string.Empty;
+            DateOfBirth = DateTime.MinValue;
+            Iipan = string.Empty;
+            AddressCity = string.Empty;
+            AddressHouse = string.Empty;
+            AddressStreet = string.Empty;
+            AddressOther = string.Empty;
+            PassportNumber = string.Empty;
+            PassportCode = string.Empty;
+            PassportExtraditionPlace = string.Empty;
+            PassportDate = DateTime.MinValue;
+            MedicalInsuranceNumber = null;
+            InsuranceCompanyName = string.Empty;
+            DateOfIssue = DateTime.MinValue;
+        }
 
         #endregion
     }
