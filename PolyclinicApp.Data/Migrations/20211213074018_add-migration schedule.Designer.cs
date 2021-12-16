@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PolyclinicApp.Data.DataAccess;
 
@@ -11,9 +12,10 @@ using PolyclinicApp.Data.DataAccess;
 namespace PolyclinicApp.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211213074018_add-migration schedule")]
+    partial class addmigrationschedule
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -239,26 +241,26 @@ namespace PolyclinicApp.Data.Migrations
                     b.Property<int>("DoctorId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Friday")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("Friday")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("Monday")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("Monday")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("Saturday")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("Saturday")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("Sunday")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("Sunday")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("Thursday")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("Thursday")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("Tuesday")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("Tuesday")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("Wednesday")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("Wednesday")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("ScheduleId");
 

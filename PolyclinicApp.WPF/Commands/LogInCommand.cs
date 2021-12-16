@@ -17,11 +17,10 @@ namespace PolyclinicApp.WPF.Commands
         private readonly IAuthorizationService _authorizationService;
         private readonly IViewModelFactory _viewModelFactory;
         private readonly ILoginStore _loginStore;
-        private readonly LoginViewModel _loginViewModel;
+        private LoginViewModel _loginViewModel;
 
         public LogInCommand(IHost host)
         {
-            _loginViewModel = host.Services.GetRequiredService<LoginViewModel>();
             _authorizationService = host.Services.GetRequiredService<IAuthorizationService>();
             _navigationStore = host.Services.GetRequiredService<INavigationStore>();
             _viewModelFactory = host.Services.GetRequiredService<IViewModelFactory>();
@@ -32,6 +31,7 @@ namespace PolyclinicApp.WPF.Commands
 
         public override void Execute(object? parameter)
         {
+            _loginViewModel = (LoginViewModel)_viewModelFactory.CreateViewModel(ViewType.Login)!;
             var login = _loginViewModel.Login;
             var password = _loginViewModel.Password;
 

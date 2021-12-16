@@ -35,7 +35,7 @@ internal class InformationViewModel : ViewModel
 
     public InformationViewModel(IHost host)
     {
-        using (var appDbContext = host.Services.GetRequiredService<AppDbContextFactory>().CreateDbContext(null))
+        using (var appDbContext = host.Services.GetRequiredService<AppDbContextFactory>().CreateDbContext(new []{"Default"}))
         {
             _ordersTable = new ObservableCollection<MedicineCard>(appDbContext.MedicineCards!
                 .Include(x => x.Patient)

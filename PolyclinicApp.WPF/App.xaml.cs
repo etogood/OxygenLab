@@ -30,9 +30,7 @@ public partial class App : Application
     protected override async void OnStartup(StartupEventArgs e)
     {
         await _host.StartAsync();
-
-        var navigationStore = _host.Services.GetRequiredService<INavigationStore>();
-        navigationStore.CurrentViewModel =
+        _host.Services.GetRequiredService<INavigationStore>().CurrentViewModel =
             _host.Services.GetRequiredService<IViewModelFactory>().CreateViewModel(ViewType.Login);
 
         MainWindow = _host.Services.GetRequiredService<MainWindow>();

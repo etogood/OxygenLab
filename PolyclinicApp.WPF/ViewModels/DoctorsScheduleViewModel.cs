@@ -20,7 +20,7 @@ namespace PolyclinicApp.WPF.ViewModels
 
         public DoctorsScheduleViewModel(IHost host)
         {
-            using (var appDbContext = host.Services.GetRequiredService<AppDbContextFactory>().CreateDbContext(null))
+            using (var appDbContext = host.Services.GetRequiredService<AppDbContextFactory>().CreateDbContext(new []{"Default"}))
             {
                 _scheduleTable = new ObservableCollection<Schedule>(appDbContext.Schedules!
                     .Include(x => x.Doctor));

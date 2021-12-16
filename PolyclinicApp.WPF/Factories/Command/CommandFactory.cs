@@ -20,6 +20,7 @@ namespace PolyclinicApp.WPF.Factories.Command
             return commandType switch
             {
                 CommandType.Close => _host.Services.GetRequiredService<CloseCommand>(),
+                CommandType.Login => _host.Services.GetRequiredService<LogInCommand>(),
                 CommandType.OpenSchedule => _host.Services.GetRequiredService<DoctorsScheduleCommand>(),
                 CommandType.OpenNewPatient => _host.Services.GetRequiredService<NewPatientCommand>(),
                 CommandType.OpenNewAppointment => _host.Services.GetRequiredService<NewAppointmentCommand>(),

@@ -16,7 +16,7 @@ namespace PolyclinicApp.WPF.Services.Users
 
         public UsersService(IHost host)
         {
-            _context = host.Services.GetRequiredService<AppDbContextFactory>().CreateDbContext(null);
+            _context = host.Services.GetRequiredService<AppDbContextFactory>().CreateDbContext(new []{"Default"});
         }
 
         public async Task Create(User user)

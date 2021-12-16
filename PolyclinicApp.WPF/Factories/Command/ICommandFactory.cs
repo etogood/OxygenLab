@@ -11,7 +11,8 @@ namespace PolyclinicApp.WPF.Factories.Command
         OpenNewAppointment,
         OpenInfo,
         CreateNewPatient,
-        CreateNewAppointment
+        CreateNewAppointment,
+        Login
     }
 
     internal interface ICommandFactory

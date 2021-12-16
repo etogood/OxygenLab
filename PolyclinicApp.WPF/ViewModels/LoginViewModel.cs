@@ -8,6 +8,7 @@ using System.Windows.Input;
 using PolyclinicApp.WPF.Stores.Login;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using PolyclinicApp.WPF.Factories.Command;
 
 namespace PolyclinicApp.WPF.ViewModels;
 
@@ -60,7 +61,7 @@ internal class LoginViewModel : ViewModel
     {
         _errorViewModel = host.Services.GetRequiredService<ErrorViewModel>();
         MessageViewModel = host.Services.GetRequiredService<MessageViewModel>();
-        LogInCommand = host.Services.GetRequiredService<LogInCommand>();
+        LogInCommand = host.Services.GetRequiredService<ICommandFactory>().CreateCommand(CommandType.Login);
     }
 
     #endregion Ctor
