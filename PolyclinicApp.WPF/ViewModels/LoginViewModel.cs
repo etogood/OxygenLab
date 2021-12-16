@@ -1,14 +1,9 @@
-﻿using PolyclinicApp.WPF.Commands;
-using PolyclinicApp.WPF.Factories.ViewModel;
-using PolyclinicApp.WPF.Services.Authorization;
-using PolyclinicApp.WPF.Stores.Navigation;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using PolyclinicApp.WPF.Factories.Command;
 using PolyclinicApp.WPF.ViewModels.Base;
 using System.Collections;
 using System.Windows.Input;
-using PolyclinicApp.WPF.Stores.Login;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using PolyclinicApp.WPF.Factories.Command;
 
 namespace PolyclinicApp.WPF.ViewModels;
 
@@ -37,7 +32,7 @@ internal class LoginViewModel : ViewModel
     }
 
     private string _password;
-    
+
     public string Password
     {
         get => _password;
@@ -50,8 +45,6 @@ internal class LoginViewModel : ViewModel
     {
         set => MessageViewModel.Message = value;
     }
-
-    
 
     #endregion Properties
 

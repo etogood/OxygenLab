@@ -6,6 +6,8 @@ using PolyclinicApp.WPF.Stores.Navigation;
 using PolyclinicApp.WPF.ViewModels;
 using PolyclinicApp.WPF.Views.Windows;
 using System.Windows;
+using Microsoft.EntityFrameworkCore;
+using PolyclinicApp.Data.DataAccess;
 
 namespace PolyclinicApp.WPF;
 
@@ -30,6 +32,7 @@ public partial class App : Application
     protected override async void OnStartup(StartupEventArgs e)
     {
         await _host.StartAsync();
+        await _host.Services.GetRequiredService<AppDbContextFactory>().CreateDbContext(new []{"Default"}).Database.MigrateAsync();
         _host.Services.GetRequiredService<INavigationStore>().CurrentViewModel =
             _host.Services.GetRequiredService<IViewModelFactory>().CreateViewModel(ViewType.Login);
 
