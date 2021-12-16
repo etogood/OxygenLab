@@ -308,22 +308,22 @@ namespace PolyclinicApp.WPF.ViewModels
 
         public void Clear()
         {
-            Surname = string.Empty;
-            FirstName = string.Empty;
-            Patronymic = string.Empty;
-            DateOfBirth = DateTime.MinValue;
-            Iipan = string.Empty;
-            AddressCity = string.Empty;
-            AddressHouse = string.Empty;
-            AddressStreet = string.Empty;
-            AddressOther = string.Empty;
-            PassportNumber = string.Empty;
-            PassportCode = string.Empty;
-            PassportExtraditionPlace = string.Empty;
-            PassportDate = DateTime.MinValue;
-            MedicalInsuranceNumber = null;
-            InsuranceCompanyName = string.Empty;
-            DateOfIssue = DateTime.MinValue;
+            _surname = string.Empty;
+            _firstName = string.Empty;
+            _patronymic = string.Empty;
+            _dateOfBirth = DateTime.MinValue;
+            _iipan = string.Empty;
+            _addressCity = string.Empty;
+            _addressHouse = string.Empty;
+            _addressStreet = string.Empty;
+            _addressOther = string.Empty;
+            _passportNumber = string.Empty;
+            _passportCode = string.Empty;
+            _passportExtraditionPlace = string.Empty;
+            _passportDate = DateTime.MinValue;
+            _medicalInsuranceNumber = null;
+            _insuranceCompanyName = string.Empty;
+            _dateOfIssue = DateTime.MinValue;
         }
 
         #endregion
