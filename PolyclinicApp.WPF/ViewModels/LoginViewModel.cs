@@ -9,11 +9,6 @@ namespace PolyclinicApp.WPF.ViewModels;
 
 internal class LoginViewModel : ViewModel
 {
-    #region Fields
-
-    private readonly ErrorViewModel _errorViewModel;
-
-    #endregion Fields
 
     #region Commands
 
@@ -52,19 +47,10 @@ internal class LoginViewModel : ViewModel
 
     public LoginViewModel(IHost host)
     {
-        _errorViewModel = host.Services.GetRequiredService<ErrorViewModel>();
         MessageViewModel = host.Services.GetRequiredService<MessageViewModel>();
         LogInCommand = host.Services.GetRequiredService<ICommandFactory>().CreateCommand(CommandType.Login);
     }
 
     #endregion Ctor
 
-    #region Errors
-
-    public IEnumerable? GetErrors(string propertyName)
-    {
-        return _errorViewModel.GetErrors(propertyName);
-    }
-
-    #endregion Errors
 }

@@ -10,17 +10,12 @@ public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
         var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
 
         var config = new ConfigurationBuilder()
-            .SetBasePath(@"C:\Users\etogood\source\repos\WPFandCONSOLEapps\.NET 6.0\PolyclinicApp\PolyclinicApp.WPF\bin\Debug\net6.0-windows")
-            .AddJsonFile("appdbsettings.json").Build();
+            .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../../../PolyclinicApp.Data/DataAccess"))
+            .AddJsonFile("appdbsettings.json", false, true)
+            .AddEnvironmentVariables()
+            .Build();
+        var connectionString = config.GetConnectionString("DefaultConnection");
 
-
-            return args[0] switch
-            {
-                "Default" => new AppDbContext(optionsBuilder
-                    .UseSqlServer(config.GetConnectionString("DefaultConnection")).Options),
-                _ => new AppDbContext(optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"))
-                    .Options)
-            };
-
+        return new AppDbContext(optionsBuilder.UseSqlServer(connectionString).Options);
     }
 }

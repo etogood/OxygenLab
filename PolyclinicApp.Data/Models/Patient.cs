@@ -1,10 +1,10 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using PolyclinicApplication.Data.Models;
 
 #nullable disable
 
-namespace PolyclinicApplication.Data.Models
+namespace PolyclinicApp.Data.Models
 {
     public class Patient
     {

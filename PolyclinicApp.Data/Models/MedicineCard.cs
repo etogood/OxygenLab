@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using PolyclinicApp.Data.Models;
 
 #nullable disable
 
@@ -18,7 +19,7 @@ namespace PolyclinicApplication.Data.Models
         public string Disease { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime DateOfDiagnosis { get; set; }
+        public DateTime? DateOfDiagnosis { get; set; }
 
         [ForeignKey("PatientId")]
         public Patient Patient { get; set; }

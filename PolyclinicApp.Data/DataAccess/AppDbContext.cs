@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using PolyclinicApp.Data.Models;
 using PolyclinicApplication.Data.Models;
 
 namespace PolyclinicApp.Data.DataAccess;

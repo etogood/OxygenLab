@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using PolyclinicApplication.Data.Models;
 
 #nullable disable
 
-namespace PolyclinicApplication.Data.Models
+namespace PolyclinicApp.Data.Models
 {
     public class Doctor
     {
@@ -18,9 +19,10 @@ namespace PolyclinicApplication.Data.Models
 
         public string Patronymic { get; set; }
 
+        [NotMapped]
         public string FullName => Surname + " " + FirstName + " " + Patronymic;
 
-            [ForeignKey("SpecializationId")]
+        [ForeignKey("SpecializationId")]
         public Specialization Specialization { get; set; }
     }
 }

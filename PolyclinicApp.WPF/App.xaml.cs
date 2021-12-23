@@ -6,18 +6,22 @@ using PolyclinicApp.WPF.Stores.Navigation;
 using PolyclinicApp.WPF.ViewModels;
 using PolyclinicApp.WPF.Views.Windows;
 using System.Windows;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using PolyclinicApp.Data.DataAccess;
+using PolyclinicApp.Data.AutoMapper;
 
 namespace PolyclinicApp.WPF;
 
 public partial class App : Application
 {
     private static IHost _host = null!;
+    private static IMapper _mapper;
 
     public App()
     {
         _host = CreateHostBuilder().Build();
+        _mapper = CreateMapperConfiguration().CreateMapper();
     }
 
     private static IHostBuilder CreateHostBuilder(string[]? args = null) => Host.CreateDefaultBuilder(args)
@@ -27,12 +31,16 @@ public partial class App : Application
         .AddViewModels()
         .AddViews()
         .AddCommands()
-        .AddDbContext();
+        .AddDbContext()
+        .AddMappingProfiles();
+
+    private static MapperConfiguration CreateMapperConfiguration() =>
+        new MapperConfiguration(cfg => cfg.AddProfile(_host.Services.GetRequiredService<Profile>()));
 
     protected override async void OnStartup(StartupEventArgs e)
     {
         await _host.StartAsync();
-        await _host.Services.GetRequiredService<AppDbContextFactory>().CreateDbContext(new []{"Default"}).Database.MigrateAsync();
+        await _host.Services.GetRequiredService<AppDbContextFactory>().CreateDbContext(null).Database.MigrateAsync();
         _host.Services.GetRequiredService<INavigationStore>().CurrentViewModel =
             _host.Services.GetRequiredService<IViewModelFactory>().CreateViewModel(ViewType.Login);
 

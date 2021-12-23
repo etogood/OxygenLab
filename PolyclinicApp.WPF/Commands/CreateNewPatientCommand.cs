@@ -4,6 +4,7 @@ using PolyclinicApp.WPF.Commands.Base;
 using PolyclinicApp.WPF.ViewModels;
 using System;
 using PolyclinicApp.Data.DataAccess;
+using PolyclinicApp.Data.Models;
 using PolyclinicApplication.Data.Models;
 
 namespace PolyclinicApp.WPF.Commands
