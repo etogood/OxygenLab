@@ -5,7 +5,7 @@ using PolyclinicApp.Data.Models;
 
 #nullable disable
 
-namespace PolyclinicApplication.Data.Models
+namespace PolyclinicApp.Data.Models
 {
     public class MedicineCard
     {

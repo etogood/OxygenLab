@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PolyclinicApp.Data.AutoMapper;
+using PolyclinicApp.Data.AutoMapperProfiles;
 
 namespace PolyclinicApp.WPF.HostBuilders
 {
@@ -16,6 +16,7 @@ namespace PolyclinicApp.WPF.HostBuilders
         {
             return host.ConfigureServices(services =>
             {
+                services.AddAutoMapper(typeof(App).Assembly);
                 services.AddSingleton<Profile, DataMappingProfile>();
             });
         }

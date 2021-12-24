@@ -1,27 +1,23 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PolyclinicApp.Data.DataAccess;
 using PolyclinicApp.WPF.Factories.ViewModel;
 using PolyclinicApp.WPF.HostBuilders;
 using PolyclinicApp.WPF.Stores.Navigation;
 using PolyclinicApp.WPF.ViewModels;
 using PolyclinicApp.WPF.Views.Windows;
 using System.Windows;
-using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using PolyclinicApp.Data.DataAccess;
-using PolyclinicApp.Data.AutoMapper;
 
 namespace PolyclinicApp.WPF;
 
 public partial class App : Application
 {
     private static IHost _host = null!;
-    private static IMapper _mapper;
 
     public App()
     {
         _host = CreateHostBuilder().Build();
-        _mapper = CreateMapperConfiguration().CreateMapper();
     }
 
     private static IHostBuilder CreateHostBuilder(string[]? args = null) => Host.CreateDefaultBuilder(args)
@@ -33,9 +29,6 @@ public partial class App : Application
         .AddCommands()
         .AddDbContext()
         .AddMappingProfiles();
-
-    private static MapperConfiguration CreateMapperConfiguration() =>
-        new MapperConfiguration(cfg => cfg.AddProfile(_host.Services.GetRequiredService<Profile>()));
 
     protected override async void OnStartup(StartupEventArgs e)
     {

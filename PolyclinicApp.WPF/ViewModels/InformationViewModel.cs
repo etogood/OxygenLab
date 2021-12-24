@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PolyclinicApp.Data.DataAccess;
+using PolyclinicApp.Data.Models;
 using PolyclinicApp.WPF.Factories.ViewModel;
 using PolyclinicApp.WPF.Stores.Navigation;
 using PolyclinicApp.WPF.ViewModels.Base;
