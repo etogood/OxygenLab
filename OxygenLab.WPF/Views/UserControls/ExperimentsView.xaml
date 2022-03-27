@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800" Background="White">
     <StackPanel>
         <Button Content="Зарегистрировать новый эксперимент" Cursor="Hand" Command="{Binding CreateNewExperimentCommand}"/>
-        <DataGrid AutoGenerateColumns="False" ColumnWidth="*" ItemsSource="{Binding ExperimentsTable}" FontSize="10" IsReadOnly="True" CanUserResizeColumns="True" CanUserResizeRows="False">
+        <DataGrid Height="330" AutoGenerateColumns="False" ColumnWidth="*" ItemsSource="{Binding ExperimentsTable}" FontSize="10" IsReadOnly="True" CanUserResizeColumns="True" CanUserResizeRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№ Эксперимента" Binding="{Binding ExperimentId}"/>
                 <DataGridTextColumn Header="Название" Binding="{Binding ExperimentName}"/>
@@ -17,5 +17,6 @@
                 <DataGridTextColumn Header="Дата проведения" Binding="{Binding DateOfExperiment, StringFormat=dd-MM-yyyy}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Content="Назад" Style="{StaticResource MaterialDesignFlatButton}" Command="{Binding BackCommand}"/>
     </StackPanel>
 </UserControl>

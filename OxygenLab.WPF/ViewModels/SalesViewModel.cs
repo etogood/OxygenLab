@@ -13,11 +13,19 @@ namespace OxygenLab.WPF.ViewModels
 {
     internal class SalesViewModel : ViewModel
     {
+        public ICommand BackCommand { get; }
+        private readonly IHost _host;
         private ObservableCollection<Sale> _salesTable;
         
         public ObservableCollection<Sale> SalesTable
         {
-            get => _salesTable;
+            get
+            {
+                using var appDbContext = _host.Services.GetRequiredService<AppDbContextFactory>().CreateDbContext(new[] { "Default" });
+                return new ObservableCollection<Sale>(appDbContext.Sales
+                    .Include(x => x.Client)
+                    .Include(x => x.Reagent));
+            }
             set => Set(ref _salesTable, value);
         }
 
@@ -25,6 +33,9 @@ namespace OxygenLab.WPF.ViewModels
 
         public SalesViewModel(IHost host)
         {
+            BackCommand = host.Services.GetRequiredService<ICommandFactory>().CreateCommand(CommandType.OpenInfo)!;
+
+            _host = host;
             NewSaleCommand = host.Services.GetRequiredService<ICommandFactory>().CreateCommand(CommandType.OpenNewSale)!;
             using (var appDbContext = host.Services.GetRequiredService<AppDbContextFactory>().CreateDbContext(new [] { "Default" }))
             {
@@ -33,5 +44,6 @@ namespace OxygenLab.WPF.ViewModels
                     .Include(x => x.Reagent));
             }
         }
+
     }
 }

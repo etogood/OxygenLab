@@ -20,6 +20,7 @@
                 <Label Content="{Binding Phone}" />
                 <Label Content="{Binding Post}" />
             </StackPanel>
+            <Button Margin="100 0 0 0" Width="150" Content="Назад" Command="{Binding BackCommand}" Cursor="Hand"/>
         </StackPanel>
         <Label Margin="10 30 0 0" FontSize="12" Foreground="Gray" Content="Мои эксперименты:"/>
         <DataGrid Margin="10" Height="260" AutoGenerateColumns="False" ColumnWidth="*" ItemsSource="{Binding ExperimentsTable}" FontSize="10" IsReadOnly="True" CanUserResizeColumns="True" CanUserResizeRows="False">

@@ -58,7 +58,7 @@ namespace OxygenLab.WPF.Commands
                     .Amount;
                 MessageBox.Show($"На складе осталось только {amount} ед. этого товара");
             }
-            catch (Exception )
+            catch (Exception)
             {
                 MessageBox.Show("Ошибка");
             }

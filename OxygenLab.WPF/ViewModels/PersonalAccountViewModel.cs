@@ -8,18 +8,21 @@ using System.Linq;
 using System.Windows.Input;
 using Microsoft.EntityFrameworkCore;
 using OxygenLab.Data.Models;
+using OxygenLab.WPF.Factories.Command;
 using OxygenLab.WPF.Stores.Login;
 
 namespace OxygenLab.WPF.ViewModels
 {
     internal class PersonalAccountViewModel : ViewModel
     {
-        
+
+        public ICommand BackCommand { get; }
 
         #region Fields
 
         private readonly ErrorViewModel _errorViewModel;
         private readonly ILoginStore _loginStore;
+        private readonly IHost _host;
 
         #endregion Fields
 
@@ -63,7 +66,13 @@ namespace OxygenLab.WPF.ViewModels
 
         public ObservableCollection<Experiment> ExperimentsTable
         {
-            get => _experimentsTable;
+            get
+            {
+                using var appDbContext = _host.Services.GetRequiredService<AppDbContextFactory>().CreateDbContext(new[] { "Default" });
+                return new ObservableCollection<Experiment>(appDbContext.Experiments
+                    .Include(x => x.User)
+                    .Where(x => x.User == _loginStore.CurrentUser));
+            }
             set => Set(ref _experimentsTable, value);
         }
 
@@ -88,6 +97,8 @@ namespace OxygenLab.WPF.ViewModels
 
         public PersonalAccountViewModel(IHost host)
         {
+            _host = host;
+            BackCommand = host.Services.GetRequiredService<ICommandFactory>().CreateCommand(CommandType.OpenInfo)!;
             _errorViewModel = host.Services.GetRequiredService<ErrorViewModel>();
             MessageViewModel = host.Services.GetRequiredService<MessageViewModel>();
             _loginStore = host.Services.GetRequiredService<ILoginStore>();

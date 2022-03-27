@@ -14,6 +14,8 @@ namespace OxygenLab.WPF.ViewModels
 {
     internal class ExperimentsViewModel : ViewModel
     {
+        public readonly IHost _host;
+
 
         #region Fields
 
@@ -25,6 +27,7 @@ namespace OxygenLab.WPF.ViewModels
 
         public ICommand? InformationViewCommand { get; }
         public ICommand? CreateNewExperimentCommand { get; }
+        public ICommand BackCommand { get; }
 
         #endregion Commands
 
@@ -34,9 +37,15 @@ namespace OxygenLab.WPF.ViewModels
 
         public ObservableCollection<Experiment> ExperimentsTable
         {
-            get => _experimentsTable;
+            get
+            {
+                using var appDbContext = _host.Services.GetRequiredService<AppDbContextFactory>().CreateDbContext(new[] { "Default" });
+                return new ObservableCollection<Experiment>(appDbContext.Experiments
+                    .Include(x => x.User));
+            }
             set => Set(ref _experimentsTable, value);
-        }
+            
+}
 
 
         public MessageViewModel MessageViewModel { get; }
@@ -54,6 +63,8 @@ namespace OxygenLab.WPF.ViewModels
 
         public ExperimentsViewModel(IHost host)
         {
+            BackCommand = host.Services.GetRequiredService<ICommandFactory>().CreateCommand(CommandType.OpenInfo)!;
+            _host = host;
             _errorViewModel = host.Services.GetRequiredService<ErrorViewModel>();
             InformationViewCommand = host.Services.GetRequiredService<InformationViewCommand>();
             MessageViewModel = host.Services.GetRequiredService<MessageViewModel>();
