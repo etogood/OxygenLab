@@ -1,0 +1,46 @@
+﻿<Window x:Class="OxygenLab.WPF.Views.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OxygenLab.WPF.Views.Windows"
+        xmlns:vm="clr-namespace:OxygenLab.WPF.ViewModels"
+        xmlns:userControls="clr-namespace:OxygenLab.WPF.Views.UserControls"
+        mc:Ignorable="d"
+        Height="500" Width="800" WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:LoginViewModel}">
+            <userControls:LoginView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:InformationViewModel}">
+            <userControls:InformationView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PersonalAccountViewModel}">
+            <userControls:PersonalAccountView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ExperimentsViewModel}">
+            <userControls:ExperimentsView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:SalesViewModel}">
+            <userControls:SalesView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:NewSaleViewModel}">
+            <userControls:NewSaleView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:NewExperimentViewModel}">
+            <userControls:NewExperimentView/>
+        </DataTemplate>
+    </Window.Resources>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal"  Height="50">
+            <Button Width="140" Height="40" Content="Эксперименты" Style="{StaticResource MaterialDesignOutlinedButton}" Margin="10 0 0 0" Command="{Binding ExperimentsCommand}"/>
+            <Button Width="140" Height="40" Content="Продажи" Style="{StaticResource MaterialDesignOutlinedButton}" Margin="10 0 0 0" Command="{Binding SalesCommand}"/>
+            <Button Width="140" Height="30" Content="Личный кабинет" FontSize="10" Margin="210 0 0 0"
+                    Style="{StaticResource MaterialDesignFlatButton}" Command="{Binding PersonalAccountCommand}"/>
+            <Button Width="120" Height="30" Content="Выйти и закрыть" Margin="10 0 0 0"
+                    Background="Red" BorderBrush="Red" FontSize="10" Command="{Binding CloseCommand}" Cursor="Hand" />
+        </StackPanel>
+        <Line StrokeThickness="1" Stroke="LightSlateGray" X1="800" />
+        <ContentControl Content="{Binding CurrentViewModel}" Height="400" />
+    </StackPanel>
+</Window>
